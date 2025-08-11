@@ -1,9 +1,10 @@
 workflows:
-
-    sample-workflow:
-
-        name: Codemagic Sample Workflow
-
-        max_build_duration: 120
-
-        instance_type: mac_mini_m2
+  android-apk:
+    name: Build Android APK
+    environment:
+      flutter: stable
+    scripts:
+      - flutter pub get
+      - flutter build apk --debug
+    artifacts:
+      - build/app/outputs/flutter-apk/app-debug.apk
