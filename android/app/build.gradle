@@ -182,4 +182,24 @@ dependencies {
     }
 }
 
+signingConfigs {
+    debug {
+        storeFile file(System.getenv("HOME") + "/.android/debug.keystore")
+        storePassword "android"
+        keyAlias "androiddebugkey"
+        keyPassword "android"
+    }
+    release {
+        signingConfig signingConfigs.debug
+    }
+}
+buildTypes {
+    release {
+        signingConfig signingConfigs.release
+        minifyEnabled false
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+}
+
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
