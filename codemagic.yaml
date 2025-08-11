@@ -2,15 +2,15 @@ workflows:
   react-native-android:
     name: React Native Android Build
     max_build_duration: 60
+    cache:
+      paths:
+        - ~/.npm
+        - android/.gradle
     environment:
       vars:
         PACKAGE_NAME: "com.orangehrm.mobile"
       node: 18.16.0
       java: 17
-    cache:
-      paths:
-        - ~/.npm
-        - android/.gradle
     scripts:
       - name: Install npm dependencies (skip peer deps)
         script: |
