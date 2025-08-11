@@ -4,7 +4,8 @@ workflows:
     environment:
       flutter: stable
     scripts:
+      - cd mobile_client
       - flutter pub get
       - flutter build apk --debug
     artifacts:
-      - build/app/outputs/flutter-apk/app-debug.apk
+      - mobile_client/build/app/outputs/flutter-apk/app-debug.apk
