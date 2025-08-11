@@ -7,14 +7,14 @@ workflows:
         PACKAGE_NAME: "com.orangehrm.mobile"
       node: 18.16.0
       java: 17
-    scripts:
-      - name: Install npm dependencies (skip peer deps)
-        script: |
-          npm install --legacy-peer-deps
-      - name: Clean and build APK
-        script: |
-          cd android
-          ./gradlew clean
-          ./gradlew assembleDebug
+scripts:
+  - name: Install npm dependencies (skip peer deps)
+    script: |
+      npm install --legacy-peer-deps
+  - name: Build release APK (unsigned)
+    script: |
+      cd android
+      ./gradlew clean
+      ./gradlew assembleRelease
     artifacts:
       - android/app/build/outputs/**/*.apk
