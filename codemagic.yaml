@@ -1,11 +1,24 @@
 workflows:
-  android-apk:
-    name: Build Android APK
+  react-native-android:
+    name: React Native Android Build
+    max_build_duration: 60
     environment:
-      flutter: stable
-    working_directory: mobile_client
+      vars:
+        PACKAGE_NAME: "com.orangehrm.mobile"
+      node: 18.16.0
+      java: 17
+      android: sdk
     scripts:
-      - flutter pub get
-      - flutter build apk --debug
+      - name: Install dependencies
+        script: |
+          npm install
+      - name: Set up Android project
+        script: |
+          cd android
+          ./gradlew clean
+      - name: Build debug APK
+        script: |
+          cd android
+          ./gradlew assembleDebug
     artifacts:
-      - build/app/outputs/flutter-apk/app-debug.apk
+      - android/app/build/outputs/**/*.apk
