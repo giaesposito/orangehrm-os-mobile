@@ -8,9 +8,9 @@ workflows:
       node: 18.16.0
       java: 17
     scripts:
-      - name: Install npm dependencies
+      - name: Install npm dependencies (skip peer deps)
         script: |
-          npm install
+          npm install --legacy-peer-deps
       - name: Clean and build APK
         script: |
           cd android
