@@ -3,9 +3,9 @@ workflows:
     name: Build Android APK
     environment:
       flutter: stable
+    working_directory: mobile_client
     scripts:
-      - cd mobile_client
       - flutter pub get
       - flutter build apk --debug
     artifacts:
-      - mobile_client/build/app/outputs/flutter-apk/app-debug.apk
+      - build/app/outputs/flutter-apk/app-debug.apk
